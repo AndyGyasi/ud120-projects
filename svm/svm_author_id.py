@@ -31,9 +31,9 @@ clf = SVC(kernel="rbf", C=10000.0)
 #### using the training features/labels, and to
 #### make a set of predictions on the test data
 
-# reducing the dataset to speed up algorithm, trade off between speed and accuracy
-features_train = features_train[:int(len(features_train)/100)]
-labels_train = labels_train[:int(len(labels_train)/100)]
+# reducing the dataset to 1% to speed up algorithm, trade off between speed and accuracy
+# features_train = features_train[:int(len(features_train)/100)]
+# labels_train = labels_train[:int(len(labels_train)/100)]
 
 t0 = time()
 clf = clf.fit(features_train, labels_train)
