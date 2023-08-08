@@ -24,7 +24,8 @@ features_train, features_test, labels_train, labels_test = preprocess()
 ### your code goes here ###
 
 from sklearn.svm import SVC
-clf = SVC(kernel="linear")
+# clf = SVC(kernel="linear")
+clf = SVC(kernel="rbf", C=10000.0)
 
 #### now your job is to fit the classifier
 #### using the training features/labels, and to
@@ -46,6 +47,11 @@ print("Predicting Time:", round(time()-t0, 3), "s")
 from sklearn.metrics import accuracy_score
 acc = accuracy_score(pred, labels_test)
 
-print(acc)
+# finding data points
+answer_10 = pred[10]
+answer_26 = pred[26]
+answer_50 = pred[50]
+
+print(acc, answer_10, answer_26, answer_50)
 
 
