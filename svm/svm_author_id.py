@@ -23,17 +23,29 @@ features_train, features_test, labels_train, labels_test = preprocess()
 #########################################################
 ### your code goes here ###
 
+from sklearn.svm import SVC
+clf = SVC(kernel="linear")
 
-#########################################################
+#### now your job is to fit the classifier
+#### using the training features/labels, and to
+#### make a set of predictions on the test data
 
-#########################################################
-'''
-You'll be Provided similar code in the Quiz
-But the Code provided in Quiz has an Indexing issue
-The Code Below solves that issue, So use this one
-'''
+# reducing the dataset to speed up algorithm, trade off between speed and accuracy
+features_train = features_train[:int(len(features_train)/100)]
+labels_train = labels_train[:int(len(labels_train)/100)]
 
-# features_train = features_train[:int(len(features_train)/100)]
-# labels_train = labels_train[:int(len(labels_train)/100)]
+t0 = time()
+clf = clf.fit(features_train, labels_train)
+print("Training Time:", round(time()-t0, 3), "s")
 
-#########################################################
+#### store your predictions in a list named pred
+t0 = time()
+pred = list(clf.predict(features_test))
+print("Predicting Time:", round(time()-t0, 3), "s")
+
+from sklearn.metrics import accuracy_score
+acc = accuracy_score(pred, labels_test)
+
+print(acc)
+
+
