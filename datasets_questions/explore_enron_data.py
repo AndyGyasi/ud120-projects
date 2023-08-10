@@ -17,5 +17,28 @@
 
 import joblib
 
-enron_data = joblib.load(open("../final_project/final_project_dataset.pkl", "rb"))
+#with open("../final_project/final_project_dataset_unix.pkl", "rb") as filename:
+#   enron_data = joblib.load(filename)
 
+enron_data = joblib.load(open("../final_project/final_project_dataset_unix.pkl", "rb"))
+
+# finding the size of the dataset
+print(len(enron_data))
+print(enron_data.items())
+
+# finding the number of features
+for first in enron_data.values():
+    print(len(first))
+    break
+
+# finding the number of persons of interest 
+count = 0
+for person, value in enron_data.items():
+    if value["poi"] == True:
+        count += 1
+print(count)
+
+with open("../final_project/poi_names.txt", "rb") as filename:
+    enron_poi = filename.read()
+
+print(enron_poi)

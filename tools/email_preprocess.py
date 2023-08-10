@@ -48,9 +48,14 @@ def preprocess(words_file = "../tools/word_data_unix.pkl", authors_file="../tool
 
     ### feature selection, because text is super high dimensional and 
     ### can be really computationally chewy as a result
+<<<<<<< HEAD
     selector = SelectPercentile(f_classif, percentile=10)
 
     # changing number of features
+=======
+    selector = SelectPercentile(f_classif, percentile=1)
+
+>>>>>>> d5ec08e2594e7cfd1e320bae61608994049cc5b0
     # selector = SelectPercentile(f_classif, percentile=1)
 
     selector.fit(features_train_transformed, labels_train)
