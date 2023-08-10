@@ -36,10 +36,10 @@ pred = clf.predict(features_test)
 
 
 from sklearn.metrics import accuracy_score
-# print(accuracy_score(pred, labels_test)
-acc = accuracy_score(pred, labels_test)
+print(accuracy_score(pred, labels_test))
 
-print(acc)
+# finding the number of features (columns)
+# print(len(features_train[0]))
 
 
 #########################################################
