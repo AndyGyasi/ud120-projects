@@ -38,7 +38,13 @@ for person, value in enron_data.items():
         count += 1
 print(count)
 
-with open("../final_project/poi_names.txt", "rb") as filename:
-    enron_poi = filename.read()
+# finding the stock value of James Prentice
+print(enron_data["PRENTICE JAMES"]["total_stock_value"])
 
-print(enron_poi)
+# finding the number of email messages from Wesley Colwell to persons of interest
+print(enron_data["COLWELL WESLEY"]["from_this_person_to_poi"])
+
+# finding the stock options of Jeffrey K Skilling
+print(enron_data["SKILLING JEFFREY K"]["exercised_stock_options"])
+
+print(enron_data)
