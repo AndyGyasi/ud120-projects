@@ -38,7 +38,4 @@ for person, value in enron_data.items():
         count += 1
 print(count)
 
-with open("../final_project/poi_names.txt", "rb") as filename:
-    enron_poi = filename.read()
 
-print(enron_poi)
