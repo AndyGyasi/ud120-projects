@@ -34,7 +34,7 @@ def Draw(pred, features, poi, mark_poi=False, name="image.png", f1_name="feature
 
 
 ### load in the dict of dicts containing all the data on each person in the dataset
-data_dict = joblib.load( open("../final_project/final_project_dataset.pkl", "rb") )
+data_dict = joblib.load( open("../final_project/final_project_dataset_unix.pkl", "rb") )
 ### there's an outlier--remove it! 
 data_dict.pop("TOTAL", 0)
 
@@ -61,7 +61,11 @@ plt.show()
 ### for the data and store them to a list called pred
 
 
+from sklearn.cluster import KMeans
 
+kmeans = KMeans(n_clusters=2, random_state=0, n_init="auto").fit(finance_features)
+
+pred = kmeans.predict(finance_features)
 
 ### rename the "name" parameter when you change the number of features
 ### so that the figure gets saved to a different file
