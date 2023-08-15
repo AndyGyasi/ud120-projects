@@ -30,7 +30,7 @@ target, features = targetFeatureSplit( data )
 from sklearn.model_selection import train_test_split
 feature_train, feature_test, target_train, target_test = train_test_split(features, target, test_size=0.5, random_state=42)
 train_color = "b"
-test_color = "b"
+test_color = "r"
 
 
 
@@ -45,9 +45,8 @@ from sklearn.linear_model import LinearRegression
 # create regressor
 reg = LinearRegression()
 
-<<<<<<< HEAD
 # fit regressor
-reg = reg.fit("bonus", "salary")    
+reg = reg.fit(feature_train,target_train)    
 
 # finding the slope
 reg_coef = reg.coef_
@@ -56,16 +55,11 @@ reg_coef = reg.coef_
 reg_intercept = reg.intercept_
 
 # finding the rsquared
-rsquared = reg.score("bonus", "salary")
-
-# predicting Katie's net worh
-#pred = reg.predict([27])
+rsquared = reg.score(feature_test, target_test)
  
 print(reg, reg_coef, reg_intercept, rsquared) 
 
 
-=======
->>>>>>> 62ed5acd56d78605d3f7bec247913894aeb38745
 ### draw the scatterplot, with color-coded training and testing points
 import matplotlib.pyplot as plt
 for feature, target in zip(feature_test, target_test):
@@ -78,10 +72,6 @@ plt.scatter(feature_test[0], target_test[0], color=test_color, label="test")
 plt.scatter(feature_test[0], target_test[0], color=train_color, label="train")
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 62ed5acd56d78605d3f7bec247913894aeb38745
 ### draw the regression line, once it's coded
 try:
     plt.plot( feature_test, reg.predict(feature_test) )
