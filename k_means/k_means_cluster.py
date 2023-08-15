@@ -12,7 +12,7 @@ import sys
 sys.path.append(os.path.abspath("../tools/"))
 from feature_format import featureFormat, targetFeatureSplit
 
-def Draw(pred, features, poi, mark_poi=False, name="image.png", f1_name="feature 1", f2_name="feature 2"):
+def Draw(pred, features, poi, mark_poi=False, name="image.png", f1_name="feature 1", f2_name="feature 2", f3_name="feature_3"):
     """ some plotting code designed to help you visualize your clusters """
 
     ### plot each cluster with a different color--add more colors for
@@ -55,7 +55,11 @@ poi, finance_features = targetFeatureSplit( data )
 ### for f1, f2, _ in finance_features:
 ### (as it's currently written, the line below assumes 2 features)
 for f1, f2, f3 in finance_features:
+<<<<<<< HEAD
     plt.scatter( f1, f2, f3)
+=======
+    plt.scatter( f1, f2)
+>>>>>>> 62ed5acd56d78605d3f7bec247913894aeb38745
 plt.show()
 
 ### cluster here; create predictions of the cluster labels
@@ -71,6 +75,10 @@ pred = kmeans.predict(finance_features)
 ### rename the "name" parameter when you change the number of features
 ### so that the figure gets saved to a different file
 try:
+<<<<<<< HEAD
     Draw(pred, finance_features, poi, mark_poi=False, name_1="clusters.pdf", f1_name=feature_1, f2_name=feature_2)
+=======
+    Draw(pred, finance_features, poi, mark_poi=False, name="clusters1.pdf", f1_name=feature_1, f2_name=feature_2, f3_name=feature_3)
+>>>>>>> 62ed5acd56d78605d3f7bec247913894aeb38745
 except NameError:
     print("No predictions object named pred found, no clusters to plot")

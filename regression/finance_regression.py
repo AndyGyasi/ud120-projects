@@ -45,6 +45,7 @@ from sklearn.linear_model import LinearRegression
 # create regressor
 reg = LinearRegression()
 
+<<<<<<< HEAD
 # fit regressor
 reg = reg.fit("bonus", "salary")    
 
@@ -63,6 +64,8 @@ rsquared = reg.score("bonus", "salary")
 print(reg, reg_coef, reg_intercept, rsquared) 
 
 
+=======
+>>>>>>> 62ed5acd56d78605d3f7bec247913894aeb38745
 ### draw the scatterplot, with color-coded training and testing points
 import matplotlib.pyplot as plt
 for feature, target in zip(feature_test, target_test):
@@ -75,7 +78,10 @@ plt.scatter(feature_test[0], target_test[0], color=test_color, label="test")
 plt.scatter(feature_test[0], target_test[0], color=train_color, label="train")
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 62ed5acd56d78605d3f7bec247913894aeb38745
 ### draw the regression line, once it's coded
 try:
     plt.plot( feature_test, reg.predict(feature_test) )
