@@ -17,7 +17,7 @@ import sys
 import joblib
 sys.path.append(os.path.abspath("../tools/"))
 from feature_format import featureFormat, targetFeatureSplit
-dictionary = joblib.load( open("../final_project/final_project_dataset_modified.pkl", "rb") )
+dictionary = joblib.load( open("../final_project/final_project_dataset_modified_unix.pkl", "rb") )
 
 
 ### list the features you want to look at--first item in the 
@@ -41,11 +41,6 @@ test_color = "b"
 
 
 
-
-
-
-
-
 ### draw the scatterplot, with color-coded training and testing points
 import matplotlib.pyplot as plt
 for feature, target in zip(feature_test, target_test):
@@ -56,8 +51,6 @@ for feature, target in zip(feature_train, target_train):
 ### labels for the legend
 plt.scatter(feature_test[0], target_test[0], color=test_color, label="test")
 plt.scatter(feature_test[0], target_test[0], color=train_color, label="train")
-
-
 
 
 ### draw the regression line, once it's coded
