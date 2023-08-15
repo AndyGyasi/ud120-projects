@@ -9,12 +9,20 @@ def outlierCleaner(predictions, ages, net_worths):
 
         Return a list of tuples named cleaned_data where 
         each tuple is of the form (age, net_worth, error).
+
+        training =  90
+
     """
-    
+       
     cleaned_data = []
 
     ### your code goes here
 
-    
+    for prediction, age, net_worth in zip(predictions, ages, net_worths):
+        error = net_worth - prediction
+        clean_point = (age, net_worth, error)
+        cleaned_data.append(clean_point)
+
     return cleaned_data
+
 

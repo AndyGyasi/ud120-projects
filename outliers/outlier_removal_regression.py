@@ -7,12 +7,9 @@ import joblib
 
 from outlier_cleaner import outlierCleaner
 
-
 ### load up some practice data with outliers in it
-ages = joblib.load( open("./outliers/practice_outliers_ages.pkl", "rb") )
-net_worths = joblib.load( open("./outliers/practice_outliers_net_worths.pkl", "rb") )
-
-
+ages = joblib.load( open("practice_outliers_ages_unix.pkl", "rb") )
+net_worths = joblib.load( open("practice_outliers_net_worths_unix.pkl", "rb") )
 
 ### ages and net_worths need to be reshaped into 2D numpy arrays
 ### second argument of reshape command is a tuple of integers: (n_rows, n_columns)
@@ -26,17 +23,28 @@ ages_train, ages_test, net_worths_train, net_worths_test = train_test_split(ages
 ### fill in a regression here!  Name the regression object reg so that
 ### the plotting code below works, and you can see what your regression looks like
 
+# import regressor
+from sklearn.linear_model import LinearRegression
 
+# create regressor
+reg = LinearRegression()
 
+# fit regressor
+reg = reg.fit(ages_train, net_worths_train)    
 
+# finding the slope
+reg_coef = reg.coef_
 
+# finding the intercept
+reg_intercept = reg.intercept_
 
-
-
-
+# finding the rsquared
+rsquared = reg.score(ages_test, net_worths_test)
+ 
+print(reg_coef, reg_intercept, rsquared) 
 
 try:
-    plt.plot(ages, reg.predict(ages), color="blue")
+    plt.plot(ages, reg.predict(ages), color="red")
 except NameError:
     pass
 plt.scatter(ages, net_worths)
@@ -53,11 +61,6 @@ except NameError:
     print("Can't make predictions to use in identifying outliers")
 
 
-
-
-
-
-
 ### only run this code if cleaned_data is returning data
 if len(cleaned_data) > 0:
     ages, net_worths, errors = zip(*cleaned_data)
@@ -67,7 +70,7 @@ if len(cleaned_data) > 0:
     ### refit your cleaned data!
     try:
         reg.fit(ages, net_worths)
-        plt.plot(ages, reg.predict(ages), color="blue")
+        plt.plot(ages, reg.predict(ages), color="orange")
     except NameError:
         print("You don't seem to have regression imported/created,")
         print("   or else your regression object isn't named reg")
